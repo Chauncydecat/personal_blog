@@ -2,7 +2,7 @@
  * @Author: Chauncey
  * @Date: 2020-09-15 15:28:49
  * @LastEditors: Chauncey
- * @LastEditTime: 2020-10-12 15:40:57
+ * @LastEditTime: 2020-12-29 16:13:18
  * @FilePath: \blog\service\app\controller\default\home.js
  */
 'use strict';
@@ -14,8 +14,8 @@ class HomeController extends Controller {
     async index() {
         //获取用户表的数据
 
-        let result = await this.app.mysql.get("blog_content", {})
-        console.log(result)
+        let result = await this.app.mysql.get("blogContent", {})
+        //console.log(result)
         this.ctx.body = result
     }
 
@@ -23,10 +23,10 @@ class HomeController extends Controller {
         let sql = 'SELECT t1.id as id,' +
             't1.title as title,' +
             't1.introduce as introduce,' +
-            "FROM_UNIXTIME(t1.add_time,'%Y-%m-%d %H:%i:%s') as addTime," +
-            't1.view_count as viewCount ,' +
-            't2.type_name as typeName ' +
-            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.type_id = t2.id'
+            "FROM_UNIXTIME(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime," +
+            't1.viewCount as viewCount ,' +
+            't2.typeName as typeName ' +
+            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.typeId = t2.id'
 
         const res = await this.app.mysql.query(sql);
         this.ctx.body = {
@@ -41,12 +41,12 @@ class HomeController extends Controller {
         let sql = 'SELECT t1.id as id,' +
             't1.title as title,' +
             't1.introduce as introduce,' +
-            't1.article_content as articleContent,' +
-            "FROM_UNIXTIME(t1.add_time,'%Y-%m-%d %H:%i:%s') as addTime," +
-            't1.view_count as viewCount ,' +
-            't2.type_name as typeName ,' +
-            't1.type_id as typeId ' +
-            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.type_id = t2.id ' +
+            't1.articleContent as articleContent,' +
+            "FROM_UNIXTIME(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime," +
+            't1.viewCount as viewCount ,' +
+            't2.typeName as typeName ,' +
+            't1.typeId as typeId ' +
+            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.typeId = t2.id ' +
             'WHERE t1.id=' + id
 
         const res = await this.app.mysql.query(sql);
@@ -70,13 +70,13 @@ class HomeController extends Controller {
         let sql = 'SELECT t1.id as id,' +
             't1.title as title,' +
             't1.introduce as introduce,' +
-            't1.article_content as articleContent,' +
-            "FROM_UNIXTIME(t1.add_time,'%Y-%m-%d %H:%i:%s') as addTime," +
-            't1.view_count as viewCount ,' +
-            't2.type_name as typeName ,' +
-            't1.type_id as typeId ' +
-            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.type_id = t2.id ' +
-            'WHERE type_id=' + id
+            't1.articleContent as articleContent,' +
+            "FROM_UNIXTIME(t1.addTime,'%Y-%m-%d %H:%i:%s') as addTime," +
+            't1.viewCount as viewCount ,' +
+            't2.typeName as typeName ,' +
+            't1.typeId as typeId ' +
+            'FROM article AS t1 LEFT JOIN type AS t2 ON t1.typeId = t2.id ' +
+            'WHERE typeId=' + id
 
         const res = await this.app.mysql.query(sql);
         this.ctx.body = {

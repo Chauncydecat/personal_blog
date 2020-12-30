@@ -2,7 +2,7 @@
  * @Author: Chauncey
  * @Date: 2020-09-11 09:26:16
  * @LastEditors: Chauncey
- * @LastEditTime: 2020-10-10 18:22:17
+ * @LastEditTime: 2020-12-29 17:35:16
  * @FilePath: \blog\blog\pages\detailed.js
  */
 import React, { useState } from 'react'
@@ -70,13 +70,13 @@ const Detailed = (props) => {
 
             <div>
               <div className="detailed-title">
-                博客视频详细页面展示
+                {props.title}
                 </div>
 
               <div className="list-icon center">
-                <span><CalendarOutlined />2019-06-28</span>
-                <span><VideoCameraOutlined />视频教程</span>
-                <span><HeartOutlined />5498人</span>
+                <span><CalendarOutlined />{props.addTime?props.addTime:'未知'}</span>
+                <span><VideoCameraOutlined />{props.typeName?props.typeName:'其它'}</span>
+                <span><HeartOutlined />{props.viewCount?props.viewCount:0}人</span>
               </div>
 
               <div className="detailed-content"

@@ -68,7 +68,7 @@ const Header = () => {
                             navArray.map((item) => {
                                 return (
                                     <Menu.Item key={item.id}>
-                                        {item.type_name}
+                                        {item.typeName}
                                     </Menu.Item>
                                 )
                             })

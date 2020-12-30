@@ -2,7 +2,7 @@
  * @Author: Chauncey
  * @Date: 2020-09-15 14:47:23
  * @LastEditors: Chauncey
- * @LastEditTime: 2020-10-09 17:19:02
+ * @LastEditTime: 2020-12-29 17:17:25
  * @FilePath: \blog\service\config\config.default.js
  */
 /* eslint valid-jsdoc: "off" */
@@ -58,7 +58,9 @@ module.exports = appInfo => {
   };
   config.cors = {
     origin: '*',
+    credentials: true,  //允许Cook可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+    
   };
 
   return {
